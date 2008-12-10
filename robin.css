@@ -1,0 +1,115 @@
+body {
+  background-color: #a38674;
+  color: #333;
+  font-family: helvetica,sans-serif;
+}
+body {
+  font-size: 110%;
+}
+#page {
+  background-color: white;
+  border: 2px solid #aaa;
+  margin: 0 auto;
+  width: 1000px;
+}
+#header,
+#content,
+#footer {
+  padding: 2ex;
+}
+#logo {
+  border: none;
+}
+#input {
+  text-align: center;
+}
+#output {
+  margin-top: 1em;
+}
+#output p {
+  clear: both;
+}
+#output img {
+  float: left;
+}
+#output .time {
+  color: #aaa;
+  font-size: smaller;
+  margin-left: 2ex;
+  white-space: nowrap;
+}
+#output .track {
+  margin: 1em 0;
+  padding: 1em 0;
+  border-top: 1px solid #aaa;
+}
+#output .track > img {
+  border: 1px solid #ccc;
+  height: 100px;
+  width: 100px;
+}
+#output .track > div {
+  margin-left: 120px;
+}
+.tweets {
+  margin-top: 1em;
+}
+.tweet img {
+  margin-right: 1ex;
+}
+h1 {
+  margin-top: 0;
+}
+h1,
+a,
+#header blockquote {
+  color: #f3933c;
+}
+#header blockquote {
+  margin: 0 1ex;
+}
+img#robinPic {
+  border: 2px solid #aaa;
+  float: right;
+}
+blockquote {
+  font-style: italic;
+}
+#header {
+  background-color: #eee;
+  border-bottom: 1px solid #aaa;
+}
+a {
+  text-decoration: none;
+  font-size: larger;
+}
+a:hover {
+  text-decoration: underline;
+}
+#header blockquote {
+  font-size: larger;
+}
+#user {
+  color: #aaa;
+  width: 30ex;
+}
+#exampleUsername {
+  color: #aaa;
+  font-style: italic;
+}
+#go {
+  margin-left: 1ex;
+  width: 6ex;
+}
+input,
+button {
+  font-size: 160%;
+  padding: 0.3ex;
+}
+#footer {
+  background-color: #eee;
+  border-top: 1px solid #aaa;
+}
+#footer div.item {
+  margin-bottom: 2em;
+}
