@@ -10,7 +10,10 @@ dojo.addOnLoad(function() {
         evt.preventDefault();
         dojo.byId('output').innerHTML = '';
         var form = evt.target;
-        mashup(form.user.value);
+        var user = form.user.value;
+        // Add the user to the URL hash
+        window.location = window.location.href.split('#')[0] + '#' + user;
+        mashup(user);
       }
     },
     '#user': {
@@ -26,6 +29,14 @@ dojo.addOnLoad(function() {
       }
     }
   });
+
+  // Slurp in the user from the URL hash and show recent tracks
+  var matches = window.location.href.match(/#(.*)/);
+  if (matches && matches.length > 1) {
+    var user = matches[1];
+    dojo.byId('user').value = user;
+    mashup(user);
+  }
 });
 
 var timeoutMessage = '<div class="warning">Something funky has happened, you may wish to try again in a few minutes.<p>If the problem persists you can contact me on twitter, <a href="http://twitter.com/rapaul" target="_blank">@rapaul</a>.</p></div>';
