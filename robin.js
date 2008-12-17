@@ -50,7 +50,7 @@ function mashup(user){
     content: {
       method: 'user.getrecenttracks',
       format: 'json',
-      api_key: 'key_here',
+      api_key: 'api_key',
       user: user,
       limit: 5
     },
@@ -68,7 +68,7 @@ function mashup(user){
       for (var i in tracks) {
         var track = tracks[i];
         var trackDiv = build('div', { 'class': 'track' });
-        trackDiv.appendChild(build('img', { 'src': track.image_large }));
+        trackDiv.appendChild(build('img', { 'src': track.image[2]['#text'] }));
         var trackSummary = build('div');
         var artistName = track.artist['#text'];
         var artistUrl = 'http://last.fm/music/' + encodeURI(artistName) + '/';
