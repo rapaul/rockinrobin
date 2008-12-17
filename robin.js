@@ -46,32 +46,34 @@ function mashup(user){
   output.innerHTML = 'Fetching recent tracks...';
   dojo.io.script.get({
     callbackParamName: 'callback',
-    url: 'http://lastfm-api-ext.appspot.com/2.0/',
+    url: 'http://ws.audioscrobbler.com/2.0/',
     content: {
-      method: 'user.getRecentTracks',
-      api_key: '479c73b0edf2888bdc0303e6c43959f9',
+      method: 'user.getrecenttracks',
+      format: 'json',
+      api_key: 'key_here',
       user: user,
-      limit: 5,
-      outtype: 'js'
+      limit: 5
     },
     timeout: 20000,
     load: function(response) {
       output.innerHTML = '';
-      if (response['status'] == 'failed') {
+      if (response['error']) {
         output.innerHTML = response.message;
         return;
       }
-      if (response.recenttracks.length == 0) {
+      var tracks = response.recenttracks.track;
+      if (tracks.length == 0) {
         output.innerHTML = 'No recent tracks, get scrobbling!';
       }
-      for (var i in response.recenttracks) {
-        var track = response.recenttracks[i];
+      for (var i in tracks) {
+        var track = tracks[i];
         var trackDiv = build('div', { 'class': 'track' });
         trackDiv.appendChild(build('img', { 'src': track.image_large }));
         var trackSummary = build('div');
-        var artistUrl = 'http://last.fm/music/' + encodeURI(track.artist.name) + '/';
+        var artistName = track.artist['#text'];
+        var artistUrl = 'http://last.fm/music/' + encodeURI(artistName) + '/';
         var trackUrl = artistUrl + '_/' + encodeURI(track.name);
-        trackSummary.appendChild(build('a', { 'href': artistUrl, 'target': '_blank', 'innerHTML': track.artist.name }));
+        trackSummary.appendChild(build('a', { 'href': artistUrl, 'target': '_blank', 'innerHTML': artistName }));
         trackSummary.appendChild(build('span', { 'innerHTML': ' - ' }));
         trackSummary.appendChild(build('a', { 'href': trackUrl, 'target': '_blank', 'innerHTML': track.name }));
         var formattedTime = howLongAgo(new Date(track['date'].uts * 1000));
@@ -81,7 +83,7 @@ function mashup(user){
         tweets.innerHTML = '<i>Fetching latest tweets...</i>';
         trackDiv.appendChild(tweets);
         dojo.byId('output').appendChild(trackDiv);
-        getTweets(track.artist.name, track.name, tweets);
+        getTweets(artistName, track.name, tweets);
       }
     },
     error: function(response) {
