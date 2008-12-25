@@ -3,6 +3,6 @@ Enter your last.fm username and Rockin' Robin will fetch your recent tracks and 
 This mashup is purely client side using:
  - dojo.io.script
  - twitter's jsonp API
- - last.fm jsonp API through http://lastfm-api-ext.appspot.com/2.0/
+ - last.fm jsonp API
 
 Try it out at: http://robin.rapaul.com/
