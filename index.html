@@ -13,16 +13,18 @@
     <a href="/"><img id="logo" src="logo-robin.png" alt="Rocking' Robin logo"/></a>
     <blockquote cite="http://www.last.fm/music/Bobby+Day/_/Rockin%27+Robin">Love to hear the robin goin' tweet tweet tweet</blockquote>
   </div>
-  <div id="content">
-    <div id="input">
-      <form id="usernameForm">
-        <input id="user" name="user" value="Enter your last.fm username"/><input type="submit" id="go" value="Go"/>
-        <p id="exampleUsername">Don't have a last.fm username, try using GexNZ</p>
-      </form>
-    </div>
-    <div id="output">
-      <!-- place holder -->
-    </div>
+  <div id="input">
+    <form id="usernameForm">
+      <input id="user" name="user" value="Enter your last.fm username"/><input type="submit" id="go" value="Go"/>
+      <p id="exampleUsername">Don't have a last.fm username, try using GexNZ</p>
+    </form>
+  </div>
+  <div id="loading" style="display: none">
+    <img src="loading.gif" alt="Loading"/>
+    <em>Fetching latest tracks...</em>
+  </div>
+  <div id="output">
+    <!-- place holder -->
   </div>
   <div id="footer">
     <div class="item">  

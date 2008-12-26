@@ -42,8 +42,8 @@ dojo.addOnLoad(function() {
 var timeoutMessage = '<div class="warning">Something funky has happened, you may wish to try again in a few minutes.<p>If the problem persists you can contact me on twitter, <a href="http://twitter.com/rapaul" target="_blank">@rapaul</a>.</p></div>';
 
 function mashup(user){
-  var output = dojo.byId('output');
-  output.innerHTML = 'Fetching recent tracks...';
+  fadeIn('loading');
+  fadeOut('output');
   dojo.io.script.get({
     callbackParamName: 'callback',
     url: 'http://ws.audioscrobbler.com/2.0/',
@@ -56,6 +56,9 @@ function mashup(user){
     },
     timeout: 20000,
     load: function(response) {
+      var output = dojo.byId('output');
+      var loading = dojo.byId('loading');
+
       output.innerHTML = '';
       if (response['error']) {
         output.innerHTML = response.message;
@@ -85,9 +88,11 @@ function mashup(user){
         dojo.byId('output').appendChild(trackDiv);
         getTweets(artistName, track.name, tweets);
       }
+      fadeOut('loading');
+      fadeIn('output');
     },
     error: function(response) {
-      output.innerHTML = timeoutMessage;
+      dojo.byId('output').innerHTML = timeoutMessage;
     }
   });
 }
@@ -137,6 +142,20 @@ function getTweets(artist, track, containingDiv) {
  */
 function build(elementType, attributes) {
   return dojo.query(document.createElement(elementType)).attr(attributes)[0];
+}
+
+function fadeOut(node) {
+  dojo.fadeOut({
+    node:node,
+    onEnd: function() {
+      dojo.style(node, 'display', 'none');
+    }
+  }).play();
+}
+
+function fadeIn(node) {
+  dojo.style(node, {'display': 'block'});
+  dojo.fadeIn({node: node}).play();
 }
 
 /*

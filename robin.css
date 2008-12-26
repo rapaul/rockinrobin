@@ -2,29 +2,36 @@ body {
   background-color: #a38674;
   color: #333;
   font-family: helvetica,sans-serif;
-}
-body {
   font-size: 110%;
+  margin: 0;
 }
 #page {
   background-color: white;
-  border: 2px solid #aaa;
+  border-left: 2px solid #aaa;
+  border-right: 2px solid #aaa;
   margin: 0 auto;
   width: 1000px;
 }
 #header,
-#content,
+#input,
 #footer {
-  padding: 2ex;
+  padding: 1ex;
 }
 #logo {
   border: none;
 }
 #input {
-  text-align: center;
+  margin-left: 120px;
+}
+#loading {
+  background-color: white;
+  border-top: 1px solid #aaa;
+  color: #505050;
+  opacity: 0;
+  padding: 1ex;
 }
 #output {
-  margin-top: 1em;
+  padding: 0 1ex;
 }
 #output p {
   clear: both;
@@ -39,9 +46,8 @@ body {
   white-space: nowrap;
 }
 #output .track {
-  margin: 1em 0;
-  padding: 1em 0;
-  border-top: 1px solid #aaa;
+  margin: 1ex 0 0;
+  padding: 1ex 0;
 }
 #output .track > img {
   border: 1px solid #ccc;
@@ -51,7 +57,15 @@ body {
 #output .track > div {
   margin-left: 120px;
 }
+#output .track:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
 .tweets {
+  font-size: smaller;
   margin-top: 1em;
 }
 .tweet img {
@@ -66,18 +80,21 @@ a,
   color: #f3933c;
 }
 #header blockquote {
+  display: inline;
+  font-style: italic;
   margin: 0 1ex;
 }
 img#robinPic {
   border: 2px solid #aaa;
-  float: right;
+  float: left;
+  margin-right: 15px;
 }
-blockquote {
-  font-style: italic;
-}
-#header {
+#page {
   background-color: #eee;
-  border-bottom: 1px solid #aaa;
+}
+#output {
+  background-color: white;
+  border-top: 1px solid #aaa;
 }
 a {
   text-decoration: none;
@@ -86,9 +103,6 @@ a {
 a:hover {
   text-decoration: underline;
 }
-#header blockquote {
-  font-size: larger;
-}
 #user {
   color: #aaa;
   width: 30ex;
@@ -96,6 +110,7 @@ a:hover {
 #exampleUsername {
   color: #aaa;
   font-style: italic;
+  margin: 0;
 }
 #go {
   margin-left: 1ex;
@@ -107,7 +122,6 @@ button {
   padding: 0.3ex;
 }
 #footer {
-  background-color: #eee;
   border-top: 1px solid #aaa;
 }
 #footer div.item {
