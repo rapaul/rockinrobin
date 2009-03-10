@@ -70,6 +70,8 @@ body {
 }
 .tweet img {
   margin-right: 1ex;
+  height: 48px;
+  width: 48px
 }
 h1 {
   margin-top: 0;
